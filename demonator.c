@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("Demonator. Version 0.7");
+ puts("Demonator. Version 0.8");
  puts("DemonStar resource extraction tool by Popov Evgeniy Alekseyevich. 2019 year");
  puts("This software distributed under GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -93,7 +93,13 @@ FILE *create_output_file(const char *name)
 
 void go_offset(FILE *file,const unsigned long int offset)
 {
- fseek(file,offset,SEEK_SET);
+ if (fseek(file,offset,SEEK_SET)!=0)
+ {
+  putchar('\n');
+  puts("Can't jump to target offset");
+  exit(3);
+ }
+
 }
 
 void data_dump(FILE *input,FILE *output,const size_t length)
@@ -140,7 +146,7 @@ void check_memory(const void *memory)
  {
   putchar('\n');
   puts("Can't allocate memory");
-  exit(3);
+  exit(4);
  }
 
 }
@@ -169,7 +175,7 @@ void check_signature(const char *signature)
  if (strncmp(signature,"GLB2.0",6)!=0)
  {
   puts("Invalid format");
-  exit(4);
+  exit(5);
  }
 
 }

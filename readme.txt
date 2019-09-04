@@ -1,6 +1,6 @@
                        Demonator
                           
-                       Version 0.7
+                       Version 0.8
 
             Resource extraction tool for DemonStar by Popov Evgeniy Alekseyevich
 
@@ -20,8 +20,9 @@ Exit codes
 0 - Operation successfully complete.
 1 - Can't open input file.
 2 - Can't create output file.
-3 - Can't allocate memory.
-4 - Invalid format.
+3 - Can't jump to target offset.
+4 - Can't allocate memory.
+5 - Invalid format.
 
 License
 
@@ -61,4 +62,4 @@ Version history
 0.1 - Initial version.
 0.2 - 0.4 - Small changes.
 0.5 - Small bug was fixed.
-0.6 - 0.7 - Small changes.
+0.6 - 0.8 - Small changes.
