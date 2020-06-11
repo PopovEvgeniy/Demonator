@@ -1,12 +1,12 @@
                        Demonator
                           
-                       Version 0.8
+                       Version 0.8.1
 
             Resource extraction tool for DemonStar by Popov Evgeniy Alekseyevich
 
 System requirement
 
-110 kilobytes free space on storage media. 
+48 kilobytes free space on storage media. 
 
 Description and usage
 
@@ -38,7 +38,7 @@ DemonStar Secret Missions 2
 
 Source code
 
-The program source code was compiled under MINGW-w64.
+The program source code was compiled under Open Watcom.
 But you can do it under any modern C compiler.
 Source code can be compiled for wide range operation systems, but you need create makefile or build script by yourself.
 I provide only two things: compiled binary file for Windows and makefile for Linux.
@@ -62,4 +62,4 @@ Version history
 0.1 - Initial version.
 0.2 - 0.4 - Small changes.
 0.5 - Small bug was fixed.
-0.6 - 0.8 - Small changes.
+0.6 - 0.8.1 - Small changes.

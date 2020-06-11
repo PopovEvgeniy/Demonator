@@ -43,8 +43,8 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("Demonator. Version 0.8");
- puts("DemonStar resource extraction tool by Popov Evgeniy Alekseyevich. 2019 year");
+ puts("Demonator. Version 0.8.1");
+ puts("DemonStar resource extraction tool by Popov Evgeniy Alekseyevich. 2019-2020 years");
  puts("This software distributed under GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
 }
@@ -110,7 +110,7 @@ void data_dump(FILE *input,FILE *output,const size_t length)
  for (index=0;index<length;++index)
  {
   fread(&data,sizeof(unsigned char),1,input);
-  fwrite(&data,sizeof(unsigned char),1,input);
+  fwrite(&data,sizeof(unsigned char),1,output);
  }
 
 }
@@ -223,19 +223,17 @@ void work(const char *name,const char *path)
 {
  FILE *input;
  glb_subhead *table;
- unsigned long int index,amount;
- size_t position;
+ size_t index,amount;
  input=open_input_file(name);
- amount=read_head(input);
- table=read_table(input,(size_t)amount);
- position=0;
+ amount=(size_t)read_head(input);
+ table=read_table(input,amount);
  for (index=0;index<amount;++index)
  {
-  if (check_skip(table[position])==0)
+  if (check_skip(table[index])==0)
   {
-   extract(input,table[position],path);
+   extract(input,table[index],path);
   }
-  ++position;
+
  }
  fclose(input);
  free(table);
