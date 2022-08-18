@@ -1,6 +1,6 @@
                        Demonator
                           
-                       Version 0.8.3.3
+                       Version 0.8.4
 
             Resource extraction tool for DemonStar by Popov Evgeniy Alekseyevich
 
@@ -13,7 +13,7 @@ Description and usage
 Demonstar is a cool scroll-shooter. This game store resources in GLB pseudo-archives.
 Do you want to extract files from this pseudo-archives? You can use my software for doing it.
 This program takes a target file name and output path as command line arguments.
-Always add directory separator(\ or /) at end of output path.
+Always add directory separator(\ or /) at an end of output path.
 
 Exit codes
 
@@ -41,7 +41,7 @@ Source code
 The program source code compiled under Open Watcom.
 But you can do it under any modern C compiler.
 Source code can be compiled for wide range operating systems, but you need to create makefile or build script by yourself.
-I provide only two things: compiled binary file for Windows and makefile for Linux.
+I provide only two things: compiled the binary file for Windows and makefile for Linux.
 
 Install and uninstall under Linux
 
@@ -65,3 +65,4 @@ Version history
 0.6 - 0.8.3 - Small changes.
 0.8.3.1 - 0.8.3.2 - Makefile updated.
 0.8.3.3 - Documentation updated.
+0.8.4 - Small changes.

@@ -5,9 +5,7 @@
 #include "format.h"
 
 void show_intro();
-void command_line_help();
-void show_start_message();
-void show_end_message();
+void show_message(const char *message);
 FILE *open_input_file(const char *name);
 FILE *create_output_file(const char *name);
 void go_offset(FILE *file,const unsigned long int offset);
@@ -29,13 +27,13 @@ int main(int argc, char *argv[])
  show_intro();
  if (argc<3)
  {
-  command_line_help();
+  show_message("You must give a target file name and output path as command line arguments!");
  }
  else
  {
-  show_start_message();
+  show_message("Extracting a files... Please wait");
   work(argv[1],argv[2]);
-  show_end_message();
+  show_message("Work finish");
  }
  return 0;
 }
@@ -43,26 +41,16 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("Demonator. Version 0.8.3");
+ puts("Demonator. Version 0.8.4");
  puts("DemonStar resource extraction tool by Popov Evgeniy Alekseyevich. 2019-2022 years");
  puts("This software distributed under GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
 }
 
-void command_line_help()
-{
- puts("You must give a target file name and output path as command line arguments!");
-}
-
-void show_start_message()
-{
- puts("Extracting a files... Please wait");
-}
-
-void show_end_message()
+void show_message(const char *message)
 {
  putchar('\n');
- puts("Work finish");
+ puts(message);
 }
 
 FILE *open_input_file(const char *name)
