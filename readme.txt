@@ -1,6 +1,6 @@
                        Demonator
                           
-                       Version 0.8.6
+                       Version 0.8.7
 
             Resource extraction tool for DemonStar by Popov Evgeniy Alekseyevich
 
@@ -65,4 +65,4 @@ Version history
 0.6 - 0.8.3 - Small changes.
 0.8.3.1 - 0.8.3.2 - Makefile updated.
 0.8.3.3 - Documentation updated.
-0.8.4 - 0.8.6 - Small changes.
+0.8.4 - 0.8.7 - Small changes.
