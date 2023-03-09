@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("Demonator. Version 0.8.7");
+ puts("Demonator. Version 0.8.8");
  puts("DemonStar resource extraction tool by Popov Evgeniy Alekseyevich. 2019-2023 years");
  puts("This software distributed under GNU GENERAL PUBLIC LICENSE");
 }
@@ -173,7 +173,7 @@ unsigned long int read_head(FILE *input)
 glb_subhead *read_table(FILE *input,const size_t amount)
 {
  glb_subhead *table;
- table=(glb_subhead*)calloc(amount,sizeof(glb_subhead));
+ table=(glb_subhead*)malloc(amount*sizeof(glb_subhead));
  check_memory(table);
  fread(table,sizeof(glb_subhead),amount,input);
  return table;
