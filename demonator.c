@@ -41,8 +41,8 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("Demonator. Version 0.8.8");
- puts("DemonStar resource extraction tool by Popov Evgeniy Alekseyevich. 2019-2023 years");
+ puts("Demonator. Version 0.8.9");
+ puts("DemonStar resource extraction tool by Popov Evgeniy Alekseyevich. 2019-2024 years");
  puts("This software distributed under GNU GENERAL PUBLIC LICENSE");
 }
 
@@ -58,7 +58,7 @@ FILE *open_input_file(const char *name)
  target=fopen(name,"rb");
  if (target==NULL)
  {
-  show_message("Can't open input file");
+  puts("Can't open input file");
   exit(1);
  }
  return target;
@@ -156,7 +156,7 @@ void check_signature(const char *signature)
 {
  if (strncmp(signature,"GLB2.0",6)!=0)
  {
-  show_message("Invalid format");
+  puts("Invalid format");
   exit(5);
  }
 

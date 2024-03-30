@@ -1,12 +1,12 @@
                        Demonator
                           
-                       Version 0.8.8
+                       Version 0.8.9
 
             Resource extraction tool for DemonStar by Popov Evgeniy Alekseyevich
 
 System requirement
 
-48 kilobytes free space on storage media. 
+64 kilobytes free space on storage media. 
 
 Description and usage
 
@@ -65,4 +65,4 @@ Version history
 0.6 - 0.8.3 - Small changes.
 0.8.3.1 - 0.8.3.2 - Makefile updated.
 0.8.3.3 - Documentation updated.
-0.8.4 - 0.8.8 - Small changes.
+0.8.4 - 0.8.9 - Small changes.
