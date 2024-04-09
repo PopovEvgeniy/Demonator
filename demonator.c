@@ -1,7 +1,4 @@
-#include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "demonator.h"
 #include "format.h"
 
 void show_intro();
@@ -41,7 +38,7 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("Demonator. Version 0.8.9");
+ puts("Demonator. Version 0.9");
  puts("DemonStar resource extraction tool by Popov Evgeniy Alekseyevich. 2019-2024 years");
  puts("This software distributed under GNU GENERAL PUBLIC LICENSE");
 }
