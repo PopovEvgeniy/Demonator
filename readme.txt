@@ -1,6 +1,6 @@
                        Demonator
                           
-                       Version 0.9.1.1
+                       Version 0.9.1.2
 
             Resource extraction tool for DemonStar by Popov Evgeniy Alekseyevich
 
@@ -61,12 +61,12 @@ Version history
 
 0.1: Initial version.
 0.2-0.4: The small changes.
-0.5: The small bug is fixed.
+0.5: The small bug has been fixed.
 0.6-0.8.3: The small changes.
-0.8.3.1-0.8.3.2: The makefile updated.
-0.8.3.3: Documentation updated.
+0.8.3.1-0.8.3.2: The makefile has been updated.
+0.8.3.3: The documentation has been updated.
 0.8.4-0.8.9: The small changes.
-0.9: Visual C++ support improved.
-0.9.0.1: Documentation updated.
+0.9: Visual C++ support has improved.
+0.9.0.1: The documentation has been updated.
 0.9.1: The small changes.
-0.9.1.1: Documentation updated.
+0.9.1.1-0.9.1.2: The documentation has been updated.
