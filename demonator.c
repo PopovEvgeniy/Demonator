@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("Demonator. Version 0.9.1");
+ puts("Demonator. Version 0.9.2");
  puts("DemonStar resource extraction tool by Popov Evgeniy Alekseyevich. 2019-2024 years");
  puts("This software is distributed under GNU GENERAL PUBLIC LICENSE");
 }
