@@ -1,6 +1,6 @@
                        Demonator
                           
-                       Version 0.9.2
+                       Version 0.9.3
 
             Resource extraction tool for DemonStar by Popov Evgeniy Alekseyevich
 
@@ -30,7 +30,7 @@ This program is distributed under GNU GENERAL PUBLIC LICENSE.
 
 Compatibility
 
-This software successfully tested with the following games:
+This software was successfully tested with the following games:
 
 DemonStar
 DemonStar Secret Missions 1
@@ -71,3 +71,4 @@ Version history
 0.9.1: The small changes.
 0.9.1.1-0.9.1.2: The documentation has been updated.
 0.9.2: The source code was recompiled under Tiny C Compiler.
+0.9.3: The small changes.

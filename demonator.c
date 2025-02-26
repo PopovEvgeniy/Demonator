@@ -38,8 +38,8 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("Demonator. Version 0.9.2");
- puts("DemonStar resource extraction tool by Popov Evgeniy Alekseyevich. 2019-2024 years");
+ puts("Demonator. Version 0.9.3");
+ puts("DemonStar resource extraction tool by Popov Evgeniy Alekseyevich. 2019-2025 years");
  puts("This software is distributed under GNU GENERAL PUBLIC LICENSE");
 }
 
@@ -145,8 +145,8 @@ char *get_name(const char *path,const char *name)
  size_t length;
  length=strlen(path)+strlen(name);
  result=get_string_memory(length);
- strcpy(result,path);
- return strcat(result,name);
+ sprintf(result,"%s%s",path,name);
+ return result;
 }
 
 void check_signature(const char *signature)

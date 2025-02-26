@@ -1,6 +1,6 @@
 ﻿install:
 	@echo Installation in progress. Please wait
-	@gcc demonator.c -g0 -O0 -o /bin/demonator
+	@$(CC) demonator.c -g0 -O0 -o /bin/demonator
 	@chmod ugo+rx /bin/demonator
 	@echo Installation successfully complete
 uninstall:
