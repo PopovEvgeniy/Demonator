@@ -1,6 +1,6 @@
                        Demonator
                           
-                       Version 0.9.3
+                       Version 0.9.3.1
 
             Resource extraction tool for DemonStar by Popov Evgeniy Alekseyevich
 
@@ -26,7 +26,7 @@ Exit codes
 
 License
 
-This program is distributed under GNU GENERAL PUBLIC LICENSE.
+This program is distributed under the GNU GENERAL PUBLIC LICENSE.
 
 Compatibility
 
@@ -53,10 +53,6 @@ Follow these steps:
 Run as root to install: make install
 Run as root to uninstall: make uninstall
 
-Contact
-
-You can send me a letter at tuzik87@inbox.ru.
-
 Version history
 
 0.1: Initial version.
@@ -72,3 +68,4 @@ Version history
 0.9.1.1-0.9.1.2: The documentation has been updated.
 0.9.2: The source code was recompiled under Tiny C Compiler.
 0.9.3: The small changes.
+0.9.3.1: The documentation has been updated.
