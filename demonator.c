@@ -38,9 +38,9 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("Demonator. Version 0.9.3");
+ puts("Demonator. Version 0.9.4");
  puts("DemonStar resource extraction tool by Popov Evgeniy Alekseyevich. 2019-2025 years");
- puts("This software is distributed under GNU GENERAL PUBLIC LICENSE");
+ puts("This software is distributed under the GNU GENERAL PUBLIC LICENSE");
 }
 
 void show_message(const char *message)
@@ -153,7 +153,7 @@ void check_signature(const char *signature)
 {
  if (strncmp(signature,"GLB2.0",6)!=0)
  {
-  puts("Invalid format");
+  puts("The invalid format");
   exit(5);
  }
 
