@@ -1,21 +1,17 @@
                        Demonator
                           
-                       Version 0.9.4
+                       Version 0.9.4.1
 
-            Resource extraction tool for DemonStar by Popov Evgeniy Alekseyevich
+            DemonStar resource extraction tool by Popov Evgeniy Alekseyevich
 
-System requirements
-
-68 kilobytes of free space on storage media. 
-
-Description and usage
+The program description.
 
 Demonstar is a cool scroll shooter. This game stores resources in GLB pseudo-archives.
-Do you want to extract files from these pseudo-archives? You can use my software for doing it.
+Do you want to extract the files from these pseudo-archives? You can use my software for doing it.
 This program takes a target file name and an output path as the command-line arguments.
 Always add a directory separator (\ or /) at the end of the output path.
 
-Exit codes
+Exit codes.
 
 0: The operation was successfully completed.
 1: Can't open the input file.
@@ -24,26 +20,18 @@ Exit codes
 4: Can't allocate memory.
 5: The invalid format.
 
-License
+License.
 
 This program is distributed under the GNU GENERAL PUBLIC LICENSE.
 
-Compatibility
-
-This software was successfully tested with the following games:
-
-DemonStar
-DemonStar Secret Missions 1
-DemonStar Secret Missions 2
-
-Source code
+The source code.
 
 The source code was compiled under Open Watcom.
 But you can compile it with any modern C compiler.
 The source code can be compiled for a wide range of operating systems, but you need to create a makefile or a build script by yourself.
 I provide only two things: the binary file for Windows and the makefile for Linux.
 
-Install and uninstall under Linux
+Install and uninstall under Linux.
 
 Follow these steps:
 
@@ -53,9 +41,9 @@ Follow these steps:
 Run as root to install: make install
 Run as root to uninstall: make uninstall
 
-Version history
+Version history.
 
-0.1: Initial version.
+0.1: The initial version.
 0.2-0.4: The small changes.
 0.5: The small bug has been fixed.
 0.6-0.8.3: The small changes.
@@ -70,3 +58,4 @@ Version history
 0.9.3: The small changes.
 0.9.3.1: The documentation has been updated.
 0.9.4: The small changes.
+0.9.4.1: The documentation has been updated.
