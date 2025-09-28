@@ -1,12 +1,12 @@
                        Demonator
                           
-                       Version 0.9.4.1
+                       Version 0.9.5
 
             DemonStar resource extraction tool by Popov Evgeniy Alekseyevich
 
 The program description.
 
-Demonstar is a cool scroll shooter. This game stores resources in GLB pseudo-archives.
+Demonstar is a cool scroll shooter. This game stores the resources in GLB pseudo-archives.
 Do you want to extract the files from these pseudo-archives? You can use my software for doing it.
 This program takes a target file name and an output path as the command-line arguments.
 Always add a directory separator (\ or /) at the end of the output path.
@@ -59,3 +59,4 @@ Version history.
 0.9.3.1: The documentation has been updated.
 0.9.4: The small changes.
 0.9.4.1: The documentation has been updated.
+0.9.5: The extraction process has improved.
