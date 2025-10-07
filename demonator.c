@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("Demonator. Version 0.9.5");
+ puts("Demonator. Version 0.9.6");
  puts("DemonStar resource extraction tool by Popov Evgeniy Alekseyevich. 2019-2025 years");
  puts("This software is distributed under the GNU GENERAL PUBLIC LICENSE");
 }
@@ -105,11 +105,10 @@ void data_dump(FILE *input,FILE *output,const size_t length)
 {
  char *buffer;
  size_t current,elapsed,block;
- current=0;
  elapsed=0;
  block=4096;
  buffer=get_memory(block);
- while (current<length)
+ for (current=0;current<length;current+=block)
  {
   elapsed=length-current;
   if (elapsed<block)
@@ -118,7 +117,6 @@ void data_dump(FILE *input,FILE *output,const size_t length)
   }
   fread(buffer,sizeof(char),block,input);
   fwrite(buffer,sizeof(char),block,output);
-  current+=block;
  }
  free(buffer);
 }
