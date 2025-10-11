@@ -13,7 +13,7 @@ void fast_data_dump(FILE *input,FILE *output,const size_t length);
 void write_output_file(FILE *input,const char *name,const size_t length);
 char *get_name(const char *path,const char *name);
 void check_signature(const char *signature);
-unsigned long int read_head(FILE *input);
+size_t read_head(FILE *input);
 glb_subhead *read_table(FILE *input,const size_t amount);
 unsigned char check_skip(const glb_subhead current);
 void extract(FILE *input,const glb_subhead current,const char *path);
@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
  }
  else
  {
-  show_message("Extracting a files... Please wait");
+  show_message("Extracting the files... Please wait");
   work(argv[1],argv[2]);
   show_message("The work has been finished");
  }
@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("Demonator. Version 0.9.6");
+ puts("Demonator. Version 0.9.7");
  puts("DemonStar resource extraction tool by Popov Evgeniy Alekseyevich. 2019-2025 years");
  puts("This software is distributed under the GNU GENERAL PUBLIC LICENSE");
 }
@@ -166,7 +166,7 @@ void check_signature(const char *signature)
 
 }
 
-unsigned long int read_head(FILE *input)
+size_t read_head(FILE *input)
 {
  glb_head head;
  fread(&head,sizeof(glb_head),1,input);
@@ -177,7 +177,7 @@ unsigned long int read_head(FILE *input)
 glb_subhead *read_table(FILE *input,const size_t amount)
 {
  glb_subhead *table;
- table=(glb_subhead*)malloc(amount*sizeof(glb_subhead));
+ table=(glb_subhead*)calloc(amount,sizeof(glb_subhead));
  check_memory(table);
  fread(table,sizeof(glb_subhead),amount,input);
  return table;
@@ -211,7 +211,7 @@ void work(const char *name,const char *path)
  glb_subhead *table;
  size_t index,amount;
  input=open_input_file(name);
- amount=(size_t)read_head(input);
+ amount=read_head(input);
  table=read_table(input,amount);
  for (index=0;index<amount;++index)
  {
