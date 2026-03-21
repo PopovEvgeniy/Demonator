@@ -3,16 +3,16 @@
 
 void show_intro();
 void show_message(const char *message);
-void check_memory(const void *memory);
-char *get_string_memory(const size_t length);
 FILE *open_input_file(const char *name);
 FILE *create_output_file(const char *name);
-void go_offset(FILE *file,const unsigned long int offset);
+void go_offset(FILE *target,const unsigned long int offset);
+void check_memory(const void *memory);
+void check_signature(const char *signature);
+char *get_memory(const size_t length);
 void data_dump(FILE *input,FILE *output,const size_t length);
 void fast_data_dump(FILE *input,FILE *output,const size_t length);
 void write_output_file(FILE *input,const char *name,const size_t length);
 char *get_name(const char *path,const char *name);
-void check_signature(const char *signature);
 size_t read_head(FILE *input);
 glb_subhead *read_table(FILE *input,const size_t amount);
 unsigned char check_skip(const glb_subhead current);
@@ -38,8 +38,8 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("Demonator. Version 0.9.7");
- puts("DemonStar resource extraction tool by Popov Evgeniy Alekseyevich. 2019-2025 years");
+ puts("Demonator. Version 0.9.8");
+ puts("DemonStar resource extraction tool by Popov Evgeniy Alekseyevich. 2019-2026 years");
  puts("This software is distributed under the GNU GENERAL PUBLIC LICENSE");
 }
 
@@ -47,24 +47,6 @@ void show_message(const char *message)
 {
  putchar('\n');
  puts(message);
-}
-
-void check_memory(const void *memory)
-{
- if(memory==NULL)
- {
-  show_message("Can't allocate memory");
-  exit(4);
- }
-
-}
-
-char *get_memory(const size_t length)
-{
- char *memory=NULL;
- memory=(char*)calloc(length+1,sizeof(char));
- check_memory(memory);
- return memory;
 }
 
 FILE *open_input_file(const char *name)
@@ -91,14 +73,42 @@ FILE *create_output_file(const char *name)
  return target;
 }
 
-void go_offset(FILE *file,const unsigned long int offset)
+void go_offset(FILE *target,const unsigned long int offset)
 {
- if (fseek(file,offset,SEEK_SET)!=0)
+ if (fseek(target,offset,SEEK_SET)!=0)
  {
   show_message("Can't jump to the target offset");
   exit(3);
  }
 
+}
+
+void check_memory(const void *memory)
+{
+ if(memory==NULL)
+ {
+  show_message("Can't allocate memory");
+  exit(4);
+ }
+
+}
+
+void check_signature(const char *signature)
+{
+ if (strncmp(signature,"GLB2.0",6)!=0)
+ {
+  puts("The invalid format");
+  exit(5);
+ }
+
+}
+
+char *get_memory(const size_t length)
+{
+ char *memory=NULL;
+ memory=(char*)calloc(length,sizeof(char));
+ check_memory(memory);
+ return memory;
 }
 
 void data_dump(FILE *input,FILE *output,const size_t length)
@@ -117,6 +127,7 @@ void data_dump(FILE *input,FILE *output,const size_t length)
   }
   fread(buffer,sizeof(char),block,input);
   fwrite(buffer,sizeof(char),block,output);
+  fflush(output);
  }
  free(buffer);
 }
@@ -133,6 +144,7 @@ void fast_data_dump(FILE *input,FILE *output,const size_t length)
  {
   fread(buffer,sizeof(char),length,input);
   fwrite(buffer,sizeof(char),length,output);
+  fflush(output);
   free(buffer);
  }
 
@@ -154,16 +166,6 @@ char *get_name(const char *path,const char *name)
  result=get_memory(length+1);
  sprintf(result,"%s%s",path,name);
  return result;
-}
-
-void check_signature(const char *signature)
-{
- if (strncmp(signature,"GLB2.0",6)!=0)
- {
-  puts("The invalid format");
-  exit(5);
- }
-
 }
 
 size_t read_head(FILE *input)
