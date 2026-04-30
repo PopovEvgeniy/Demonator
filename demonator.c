@@ -5,6 +5,8 @@ void show_intro();
 void show_message(const char *message);
 FILE *open_input_file(const char *name);
 FILE *create_output_file(const char *name);
+void read_data(void *data,const size_t length,const size_t blocks,FILE *input);
+void write_data(const void *data,const size_t length,const size_t blocks,FILE *output);
 void go_offset(FILE *target,const unsigned long int offset);
 void check_memory(const void *memory);
 void check_signature(const char *signature);
@@ -38,7 +40,7 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("Demonator. Version 0.9.9");
+ puts("Demonator. Version 1.0");
  puts("DemonStar resource extraction tool by Popov Evgeniy Alekseyevich. 2019-2026 years");
  puts("This software is distributed under the GNU GENERAL PUBLIC LICENSE");
 }
@@ -73,12 +75,36 @@ FILE *create_output_file(const char *name)
  return target;
 }
 
+void read_data(void *data,const size_t length,const size_t blocks,FILE *input)
+{
+ fread(data,length,blocks,input);
+ if (ferror(input)!=0)
+ {
+  putchar('\n');
+  puts("Can't read data!");
+  exit(3);
+ }
+
+}
+
+void write_data(const void *data,const size_t length,const size_t blocks,FILE *output)
+{
+ fwrite(data,length,blocks,output);
+ if (ferror(output)!=0)
+ {
+  putchar('\n');
+  puts("Can't write data!");
+  exit(4);
+ }
+
+}
+
 void go_offset(FILE *target,const unsigned long int offset)
 {
  if (fseek(target,offset,SEEK_SET)!=0)
  {
   show_message("Can't jump to the target offset");
-  exit(3);
+  exit(5);
  }
 
 }
@@ -88,7 +114,7 @@ void check_memory(const void *memory)
  if(memory==NULL)
  {
   show_message("Can't allocate memory");
-  exit(4);
+  exit(6);
  }
 
 }
@@ -98,7 +124,7 @@ void check_signature(const char *signature)
  if (strncmp(signature,"GLB2.0",6)!=0)
  {
   puts("The invalid format");
-  exit(5);
+  exit(7);
  }
 
 }
@@ -125,8 +151,8 @@ void data_dump(FILE *input,FILE *output,const size_t length)
   {
    block=elapsed;
   }
-  fread(buffer,sizeof(char),block,input);
-  fwrite(buffer,sizeof(char),block,output);
+  read_data(buffer,block,sizeof(char),input);
+  write_data(buffer,block,sizeof(char),output);
  }
  free(buffer);
 }
@@ -141,8 +167,8 @@ void fast_data_dump(FILE *input,FILE *output,const size_t length)
  }
  else
  {
-  fread(buffer,sizeof(char),length,input);
-  fwrite(buffer,sizeof(char),length,output);
+  read_data(buffer,length,sizeof(char),input);
+  write_data(buffer,length,sizeof(char),output);
   free(buffer);
  }
 
@@ -169,7 +195,7 @@ char *get_name(const char *path,const char *name)
 size_t read_head(FILE *input)
 {
  glb_head head;
- fread(&head,sizeof(glb_head),1,input);
+ read_data(&head,sizeof(glb_head),1,input);
  check_signature(head.signature);
  return head.amount;
 }
@@ -179,7 +205,7 @@ glb_subhead *read_table(FILE *input,const size_t amount)
  glb_subhead *table;
  table=(glb_subhead*)calloc(amount,sizeof(glb_subhead));
  check_memory(table);
- fread(table,sizeof(glb_subhead),amount,input);
+ read_data(table,sizeof(glb_subhead),amount,input);
  return table;
 }
 

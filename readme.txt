@@ -1,6 +1,6 @@
                        Demonator
                           
-                       Version 0.9.9
+                       Version 1.0
 
             DemonStar resource extraction tool by Popov Evgeniy Alekseyevich
 
@@ -16,9 +16,11 @@ Exit codes.
 0: The operation was successfully completed.
 1: Can't open the input file.
 2: Can't create the output file.
-3: Can't jump to the target offset.
-4: Can't allocate memory.
-5: The invalid format.
+3: Can't read data!
+4: Can't write data!
+5: Can't jump to the target offset.
+6: Can't allocate memory.
+7: The invalid format.
 
 License.
 
@@ -61,3 +63,4 @@ Version history.
 0.9.4.1: The documentation has been updated.
 0.9.5: The extraction process has improved.
 0.9.6-0.9.9: The small changes.
+1.0: The file processing has improved.
