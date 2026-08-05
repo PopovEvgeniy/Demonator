@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("Demonator. Version 1.0.2");
+ puts("Demonator. Version 1.0.5");
  puts("DemonStar resource extraction tool by Popov Evgeniy Alekseyevich. 2019-2026 years");
  puts("This software is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -47,7 +47,12 @@ void show_intro()
 
 FILE *open_input_file(const char *name)
 {
- FILE *target;
+ FILE *target=NULL;
+ if (name==NULL)
+ {
+  puts("Can't open the input file");
+  exit(1);
+ }
  target=fopen(name,"rb");
  if (target==NULL)
  {
@@ -59,7 +64,12 @@ FILE *open_input_file(const char *name)
 
 FILE *create_output_file(const char *name)
 {
- FILE *target;
+ FILE *target=NULL;
+ if (name==NULL)
+ {
+  puts("Can't create the ouput file");
+  exit(2);
+ }
  target=fopen(name,"wb");
  if (target==NULL)
  {
@@ -131,10 +141,10 @@ char *get_memory(const size_t length)
 
 void data_dump(FILE *input,FILE *output,const size_t length)
 {
- char *buffer;
- size_t current,elapsed,block;
- elapsed=0;
- block=4096;
+ char *buffer=NULL;
+ size_t current=0;
+ size_t elapsed=0;
+ size_t block=4096;
  buffer=get_memory(block);
  for (current=0;current<length;current+=block)
  {
@@ -143,15 +153,15 @@ void data_dump(FILE *input,FILE *output,const size_t length)
   {
    block=elapsed;
   }
-  read_data(buffer,block,sizeof(char),input);
-  write_data(buffer,block,sizeof(char),output);
+  read_data(buffer,sizeof(char),block,input);
+  write_data(buffer,sizeof(char),block,output);
  }
  free(buffer);
 }
 
 void fast_data_dump(FILE *input,FILE *output,const size_t length)
 {
- char *buffer;
+ char *buffer=NULL;
  buffer=(char*)malloc(length);
  if (buffer==NULL)
  {
@@ -159,8 +169,8 @@ void fast_data_dump(FILE *input,FILE *output,const size_t length)
  }
  else
  {
-  read_data(buffer,length,sizeof(char),input);
-  write_data(buffer,length,sizeof(char),output);
+  read_data(buffer,sizeof(char),length,input);
+  write_data(buffer,sizeof(char),length,output);
   free(buffer);
  }
 
@@ -168,7 +178,7 @@ void fast_data_dump(FILE *input,FILE *output,const size_t length)
 
 void write_output_file(FILE *input,const char *name,const size_t length)
 {
- FILE *output;
+ FILE *output=NULL;
  output=create_output_file(name);
  fast_data_dump(input,output,length);
  fclose(output);
@@ -176,11 +186,27 @@ void write_output_file(FILE *input,const char *name,const size_t length)
 
 char *get_name(const char *path,const char *name)
 {
- char *result;
- size_t length;
- length=strlen(path)+strlen(name);
- result=get_memory(length+1);
- sprintf(result,"%s%s",path,name);
+ char *result=NULL;
+ size_t path_length=0;
+ size_t name_length=0;
+ if (path!=NULL)
+ {
+  path_length=strlen(path);
+ }
+ if (name!=NULL)
+ {
+  name_length=strlen(name);
+ }
+ if (path_length>0)
+ {
+  if (name_length>0)
+  {
+   result=get_memory(path_length+name_length+1);
+   strncpy(result,path,path_length);
+   strncat(result,name,name_length);
+  }
+
+ }
  return result;
 }
 
@@ -194,7 +220,7 @@ size_t read_head(FILE *input)
 
 glb_subhead *read_table(FILE *input,const size_t amount)
 {
- glb_subhead *table;
+ glb_subhead *table=NULL;
  table=(glb_subhead*)calloc(amount,sizeof(glb_subhead));
  check_memory(table);
  read_data(table,sizeof(glb_subhead),amount,input);
@@ -203,20 +229,27 @@ glb_subhead *read_table(FILE *input,const size_t amount)
 
 unsigned char check_skip(const glb_subhead current)
 {
- unsigned char result;
- size_t length;
- result=0;
+ unsigned char result=0;
+ size_t length=0;
  length=strlen(current.name);
- if ((current.length==0)||(current.name[length-1]==':'))
+ if (current.length==0)
  {
   result=1;
+ }
+ else
+ {
+  if (current.name[length-1]==':')
+  {
+   result=1;
+  }
+
  }
  return result;
 }
 
 void extract(FILE *input,const glb_subhead current,const char *path)
 {
- char *name;
+ char *name=NULL;
  name=get_name(path,current.name);
  go_offset(input,current.offset);
  write_output_file(input,name,(size_t)current.length);
@@ -225,9 +258,10 @@ void extract(FILE *input,const glb_subhead current,const char *path)
 
 void work(const char *name,const char *path)
 {
- FILE *input;
- glb_subhead *table;
- size_t index,amount;
+ FILE *input=NULL;
+ glb_subhead *table=NULL;
+ size_t index=0;
+ size_t amount=0;
  input=open_input_file(name);
  amount=read_head(input);
  table=read_table(input,amount);
