@@ -1,6 +1,6 @@
                        Demonator
                           
-                       Version 1.0.5
+                       Version 1.0.6
 
             DemonStar resource extraction tool by Popov Evgeniy Alekseyevich
 
@@ -21,6 +21,7 @@ Exit codes.
 5: Can't jump to the target offset.
 6: Can't allocate memory.
 7: The invalid format.
+8: The command-line arguments is invalid!
 
 License.
 
@@ -65,3 +66,4 @@ Version history.
 0.9.6-0.9.9: The small changes.
 1.0: The file processing has improved.
 1.0.1-1.0.5: The small changes.
+1.0.6: The file processing has improved.
