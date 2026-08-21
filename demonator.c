@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("Demonator. Version 1.0.6");
+ puts("Demonator. Version 1.0.7");
  puts("DemonStar resource extraction tool by Popov Evgeniy Alekseyevich. 2019-2026 years");
  puts("This software is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -58,12 +58,10 @@ void show_error(const char *message)
 FILE *open_input_file(const char *name)
 {
  FILE *target=NULL;
- if (name==NULL)
+ if (name!=NULL)
  {
-  show_error("Can't open the input file");
-  exit(OPEN_FILE_ERROR);
+  target=fopen(name,"rb");
  }
- target=fopen(name,"rb");
  if (target==NULL)
  {
   show_error("Can't open the input file");
@@ -75,15 +73,13 @@ FILE *open_input_file(const char *name)
 FILE *create_output_file(const char *name)
 {
  FILE *target=NULL;
- if (name==NULL)
+ if (name!=NULL)
  {
-  show_error("Can't create the ouput file");
-  exit(CREATE_FILE_ERROR);
+  target=fopen(name,"wb");
  }
- target=fopen(name,"wb");
  if (target==NULL)
  {
-  show_error("Can't create the ouput file");
+  show_error("Can't create the output file");
   exit(CREATE_FILE_ERROR);
  }
  return target;
