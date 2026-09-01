@@ -1,6 +1,6 @@
                        Demonator
                           
-                       Version 1.0.7
+                       Version 1.0.8
 
             DemonStar resource extraction tool by Popov Evgeniy Alekseyevich
 
@@ -67,3 +67,4 @@ Version history.
 1.0: The file processing has improved.
 1.0.1-1.0.5: The small changes.
 1.0.6-1.0.7: The file processing has improved.
+1.0.8: The small changes.

@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("Demonator. Version 1.0.7");
+ puts("Demonator 1.0.8");
  puts("DemonStar resource extraction tool by Popov Evgeniy Alekseyevich. 2019-2026 years");
  puts("This software is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -117,7 +117,7 @@ void go_offset(FILE *target,const unsigned long int offset)
 
 void check_memory(const void *memory)
 {
- if(memory==NULL)
+ if (memory==NULL)
  {
   show_error("Can't allocate memory");
   exit(MEMORY_ALLOCATION_ERROR);

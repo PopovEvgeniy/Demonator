@@ -4,5 +4,5 @@ install:
 	@chmod ugo+rx /bin/demonator
 	@echo Installation was successfully completed
 uninstall:
-	@rm -f /bin/demonator
+	@rm /bin/demonator
 	@echo Uninstallation was successfully completed
